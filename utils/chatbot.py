@@ -23,9 +23,10 @@ def chatbot(vector_store,llm,prompt,question):
 
         try:
             # Obter a resposta final
-            result=retrieval_chain.invoke({"input": "Oque é um documento de agravo?"})
+            result=retrieval_chain.invoke({"input": question})
             logger.info(f'Resultado da consulta: {result}')
         except Exception as e:
+            print(dir(retrieval_chain))
             logger.error(f"Erro no invoke: {e}")
     
         response = result.get('answer', 'Não consegui encontrar uma resposta adequada.')

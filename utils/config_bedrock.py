@@ -7,7 +7,7 @@ from utils.logger_config import logger
 bucket_name, profile_user_name = env_func() 
 
 # Configuração do Bedrock LLM
-client = boto3.client('bedrock', region_name='us-east-1') # Especificar a região correta
+client = boto3.client('bedrock-runtime', region_name='us-east-1') # Especificar a região correta
 
 def bedrock_llm():
     try:
