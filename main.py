@@ -95,9 +95,14 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 def main():
     token = env_func_telegram()
 
-    # Configura o bot
-    app = ApplicationBuilder().token(token).build()
+    try:
+        # Configura o bot
+        app = ApplicationBuilder().token(token).build()
 
+    except Exception as e:
+        print(f"Erro ao configurar o bot: {e} + {token}")
+        logger.error(f"Erro ao configurar o bot: {e} + {token}")
+    
     # Adiciona os handlers de comandos
     app.add_handler(CommandHandler("start", start))
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
