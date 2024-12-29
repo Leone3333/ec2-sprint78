@@ -1,0 +1,9 @@
+boto3
+langchain
+langchain-community
+langchain-aws
+chromadb
+PyPDF2
+watchtower
+python-telegram-bot
+python-dotenv

@@ -1,0 +1,73 @@
+  "documentation":"<p>Specifies whether to enable or disable the Bedrock trace. If enabled, you can see the full Bedrock trace.</p>",
+          "location":"header",
+          "locationName":"X-Amzn-Bedrock-Trace"
+        },
+        "guardrailIdentifier":{
+          "shape":"GuardrailIdentifier",
+          "documentation":"<p>The unique identifier of the guardrail that you want to use. If you don't provide a value, no guardrail is applied to the invocation.</p> <p>An error will be thrown in the following situations.</p> <ul> <li> <p>You don't provide a guardrail identifier but you specify the <code>amazon-bedrock-guardrailConfig</code> field in the request body.</p> </li> <li> <p>You enable the guardrail but the <code>contentType</code> isn't <code>application/json</code>.</p> </li> <li> <p>You provide a guardrail identifier, but <code>guardrailVersion</code> isn't specified.</p> </li> </ul>",
+          "location":"header",
+          "locationName":"X-Amzn-Bedrock-GuardrailIdentifier"
+        },
+        "guardrailVersion":{
+          "shape":"GuardrailVersion",
+          "documentation":"<p>The version number for the guardrail. The value can also be <code>DRAFT</code>.</p>",
+          "location":"header",
+          "locationName":"X-Amzn-Bedrock-GuardrailVersion"
+        },
+        "performanceConfigLatency":{
+          "shape":"PerformanceConfigLatency",
+          "documentation":"<p>Model performance settings for the request.</p>",
+          "location":"header",
+          "locationName":"X-Amzn-Bedrock-PerformanceConfig-Latency"
+        }
+      },
+      "payload":"body"
+    },
+    "InvokeModelResponse":{
+      "type":"structure",
+      "required":[
+        "body",
+        "contentType"
+      ],
+      "members":{
+        "body":{
+          "shape":"Body",
+          "documentation":"<p>Inference response from the model in the format specified in the <code>contentType</code> header. To see the format and content of the request and response bodies for different models, refer to <a href=\"https://docs.aws.amazon.com/bedrock/latest/userguide/model-parameters.html\">Inference parameters</a>.</p>"
+        },
+        "contentType":{
+          "shape":"MimeType",
+          "documentation":"<p>The MIME type of the inference result.</p>",
+          "location":"header",
+          "locationName":"Content-Type"
+        },
+        "performanceConfigLatency":{
+          "shape":"PerformanceConfigLatency",
+          "documentation":"<p>Model performance settings for the request.</p>",
+          "location":"header",
+          "locationName":"X-Amzn-Bedrock-PerformanceConfig-Latency"
+        }
+      },
+      "payload":"body"
+    },
+    "InvokeModelWithResponseStreamRequest":{
+      "type":"structure",
+      "required":["modelId"],
+      "members":{
+        "body":{
+          "shape":"Body",
+          "documentation":"<p>The prompt and inference parameters in the format specified in the <code>contentType</code> in the header. You must provide the body in JSON format. To see the format and content of the request and response bodies for different models, refer to <a href=\"https://docs.aws.amazon.com/bedrock/latest/userguide/model-parameters.html\">Inference parameters</a>. For more information, see <a href=\"https://docs.aws.amazon.com/bedrock/latest/userguide/api-methods-run.html\">Run inference</a> in the Bedrock User Guide.</p>"
+        },
+        "contentType":{
+          "shape":"MimeType",
+          "documentation":"<p>The MIME type of the input data in the request. You must specify <code>application/json</code>.</p>",
+          "location":"header",
+          "locationName":"Content-Type"
+        },
+        "accept":{
+          "shape":"MimeType",
+          "documentation":"<p>The desired MIME type of the inference body in the response. The default value is <code>application/json</code>.</p>",
+          "location":"header",
+          "locationName":"X-Amzn-Bedrock-Accept"
+        },
+        "modelId":{
+          "shape":"InvokeModelIdentifie
