@@ -24,7 +24,7 @@ try:
         stream_name="CHAT-RAG-GROUP-5",  # Nome do stream de logs
         boto3_client=session.client('logs')  # Passa o cliente boto3 configurado
     )
-    logger.addHandler(cloudwatch_handler)
+    logger.addHandler(cloudwatch_handler) 
     logger.info("CloudWatch Logs configurado com sucesso.")
 except NoCredentialsError as e:
     logger.error("Credenciais da AWS não configuradas corretamente.")

@@ -1,14 +1,15 @@
+import boto3
 from langchain_aws import BedrockEmbeddings, ChatBedrock
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_core.prompts import ChatPromptTemplate
 from utils.env_func import env_func
 from utils.logger_config import logger
-
 bucket_name, profile_user_name = env_func() 
 
 # Configuração do Bedrock LLM
 def bedrock_llm():
     try:
+        client = boto3.client('bedrock', region_name='us-east-1') # Especificar a região correta
         llm = ChatBedrock(
             model_id="meta.llama3-70b-instruct-v1:0",
             #max_tokens=3072,
@@ -29,6 +30,7 @@ def bedrock_llm():
 # Configuração de embeddings
 def bedrock_embeddings():
     try: 
+        client = boto3.client('bedrock', region_name='us-east-1') # Especificar a região correta
         embeddings = BedrockEmbeddings(
             model_id="amazon.titan-embed-text-v1"
         )
