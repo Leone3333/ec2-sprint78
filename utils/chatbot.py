@@ -21,10 +21,12 @@ def chatbot(vector_store,llm,prompt,question):
             retriever, combine_docs_chain
         )
 
-        # Obter a resposta final
-        result=retrieval_chain.invoke({"input": question})
-        # print("Resultado da consulta:", result)
-        logger.info(f'Resultado da consulta: {result}')
+        try:
+            # Obter a resposta final
+            result=retrieval_chain.invoke({"input": question})
+            logger.info(f'Resultado da consulta: {result}')
+        except Exception as e:
+            logger.error(f"Erro no invoke: {e}")
     
         response = result.get('answer', 'Não consegui encontrar uma resposta adequada.')
         return response
