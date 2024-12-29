@@ -7,10 +7,12 @@ from utils.logger_config import logger
 bucket_name, profile_user_name = env_func() 
 
 # Configuração do Bedrock LLM
+client = boto3.client('bedrock', region_name='us-east-1') # Especificar a região correta
+
 def bedrock_llm():
     try:
-        client = boto3.client('bedrock', region_name='us-east-1') # Especificar a região correta
         llm = ChatBedrock(
+            client=client,
             model_id="meta.llama3-70b-instruct-v1:0",
             #max_tokens=3072,
             #temperature=0.7
@@ -30,8 +32,8 @@ def bedrock_llm():
 # Configuração de embeddings
 def bedrock_embeddings():
     try: 
-        client = boto3.client('bedrock', region_name='us-east-1') # Especificar a região correta
         embeddings = BedrockEmbeddings(
+            client=client,
             model_id="amazon.titan-embed-text-v1"
         )
         logger.info(f'Gerando embbedings com {embeddings.model_id}')
