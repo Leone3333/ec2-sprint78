@@ -100,7 +100,7 @@ def main():
         app = ApplicationBuilder().token(token).build()
 
     except Exception as e:
-        print(f"Erro ao configurar o bot: {e} + {token}")
+        # print(f"Erro ao configurar o bot: {e} + {token}")
         logger.error(f"Erro ao configurar o bot: {e} + {token}")
     
     # Adiciona os handlers de comandos
