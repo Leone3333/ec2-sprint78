@@ -23,7 +23,7 @@ def chatbot(vector_store,llm,prompt,question):
 
         try:
             # Obter a resposta final
-            result=retrieval_chain.run({"input": question})
+            result=retrieval_chain.run({"input": "Oque é um documento de agravo?"})
             logger.info(f'Resultado da consulta: {result}')
         except Exception as e:
             print(dir(retrieval_chain))
