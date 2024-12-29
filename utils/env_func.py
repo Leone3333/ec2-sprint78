@@ -21,20 +21,20 @@ def env_func():
 
 def env_func_telegram():
     try:
-
         # Obtém o diretório atual
         current_dir = os.getcwd()
         print(f"Caminho atual: {current_dir}")
         
-        # Especifique o caminho do .env um diretório acima
+        # Especifica o caminho para o .env
         dotenv_path = os.path.join(current_dir, 'config', '.env')
+        print(f"Caminho do .env: {dotenv_path}")
+        
         load_dotenv(dotenv_path)  # Carrega as variáveis do .env
         
         token = os.getenv('TOKEN_TELEGRAM')
         print(f"TELEGRAM TOKEN: {token}")
     except Exception as e:
-        # print(f"Erro de carregamento de env {e}")
         from utils.logger_config import logger
         logger.error(f"Erro de carregamento de env {e}")
     
-    return token   
+    return token
