@@ -15,14 +15,11 @@ console_handler = logging.StreamHandler()
 logger.addHandler(console_handler)
 
 try:
-    # Cria uma sessão boto3 com a região configurada
-    session = boto3.Session(region_name='us-east-1')
-    
-    # Configura o CloudWatch LogHandler com a região
+    # Configura o CloudWatch LogHandler com a região explicitamente
     cloudwatch_handler = watchtower.CloudWatchLogHandler(
-        log_group="CHAT-RAG-GROUP-5",  # Nome do grupo de logs no CloudWatch
-        stream_name="CHAT-RAG-GROUP-5",  # Nome do stream de logs
-        boto3_session=session  # Passa a sessão boto3 configurada
+        log_group="CHAT-RAG-GROUP-5",
+        stream_name="CHAT-RAG-GROUP-5",
+        region_name="us-east-1"  # Região explícita
     )
     logger.addHandler(cloudwatch_handler)
     logger.info("CloudWatch Logs configurado com sucesso.")
