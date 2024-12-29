@@ -21,11 +21,13 @@ def env_func():
 
 def env_func_telegram():
     try:
+
+        # Obtém o diretório atual
+        current_dir = os.getcwd()
+        print(f"Caminho atual: {current_dir}")
+        
         # Especifique o caminho do .env um diretório acima
-        dotenv_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), '.env')
-        print(f"Caminhos .env: {dotenv_path}")
-        dotenv_path += os.path.join('config', '.env') 
-        print(f"Caminhos .env 2: {dotenv_path}")
+        dotenv_path = os.path.join(current_dir, 'config', '.env')
         load_dotenv(dotenv_path)  # Carrega as variáveis do .env
         
         token = os.getenv('TOKEN_TELEGRAM')
