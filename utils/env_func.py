@@ -24,7 +24,7 @@ def env_func_telegram():
         # Especifique o caminho do .env um diretório acima
         dotenv_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), '.env')
         print(f"Caminhos .env: {dotenv_path}")
-        dotenv_path = os.path.join('config', '.env') 
+        dotenv_path += os.path.join('config', '.env') 
         print(f"Caminhos .env 2: {dotenv_path}")
         load_dotenv(dotenv_path)  # Carrega as variáveis do .env
         
