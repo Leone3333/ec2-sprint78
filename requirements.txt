@@ -3,6 +3,7 @@ langchain
 langchain-community
 langchain-aws
 chromadb
+pypdf
 PyPDF2
 watchtower
 python-telegram-bot
