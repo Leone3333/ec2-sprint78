@@ -11,13 +11,12 @@ def env_func():
         load_dotenv(dotenv_path)  # Carrega as variáveis do .env
 
         bucket_name = os.getenv('BUCKET_NAME')
-        profile_user_name= os.getenv('SESSION_NAME')
     except Exception as e:
         # print(f"Erro de carregamento de env {e}")
         from utils.logger_config import logger
         logger.error(f"Erro de carregamento de env {e}")
     
-    return bucket_name, profile_user_name
+    return bucket_name
 
 def env_func_telegram():
     try:

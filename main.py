@@ -93,7 +93,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 # Função para iniciar o bot do Telegram
 def main():
-    token = "7623354886:AAF8gScSbRwekJ7OLkfE-ErG9XJNYibbG2g"
+    token = env_func_telegram()
 
     try:
         # Configura o bot
