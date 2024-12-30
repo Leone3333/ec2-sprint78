@@ -24,7 +24,8 @@ def vectore_store_louder(persist_directory,bedrock_embeddings_from_docs):
         # Configuração da sessão AWS
         try:
             bucket_name, profile_user_name = env_func()
-            session = boto3.Session(profile_name=profile_user_name)
+            # Cria uma sessão boto3 com a região configurada
+            session = boto3.Session(region_name='us-east-1')           
             s3 = session.client('s3')
 
             # Chama função que puxa os dados do bucket e separa em chunks
