@@ -4,8 +4,6 @@ import watchtower
 from botocore.exceptions import NoCredentialsError
 from utils.env_func import env_func
 
-bucket_name, profile_user_name = env_func()
-
 # Configura o logger
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
